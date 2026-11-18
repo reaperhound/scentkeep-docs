@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="feature-showcase.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -21,8 +22,9 @@
         </a>
         <nav class="site-nav" aria-label="Main navigation">
           <a href="#collection">Collection</a>
-          <a href="#details">Details</a>
-          <a href="#backups">Backups</a>
+          <a href="#parfumo">Parfumo</a>
+          <a href="#webdav">WebDAV</a>
+          <a href="#sync">Sync</a>
           <a href="https://github.com/reaperhound/scentkeep" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
         <a class="nav-download" href="https://github.com/reaperhound/scentkeep/releases/latest">Download</a>
@@ -81,16 +83,75 @@
         </div>
       </section>
 
-      <section class="feature-section notes-feature ink-band">
+      <section class="feature-section notes-feature ink-band" id="parfumo" data-reveal-section>
         <div class="container">
           <div class="section-intro split-heading opens-light">
-            <h2>Build the note pyramid.</h2>
-            <p class="lead">Add notes by hand, then connect Parfumo when you want search.</p>
+            <h2>Bring Parfumo into your notes.</h2>
+            <p class="lead">Search its note catalogue, save useful metadata and keep manual entry available.</p>
           </div>
-          <figure class="product-shot notes-shot" data-slot="notes" data-kind="product" data-alt="Scentkeep perfume note catalogue with real ingredient imagery">
-            <img src="assets/notes-1.png" width="1586" height="992" alt="Perfume note catalogue with images of amber, basil, bergamot, black tea and cedar" loading="lazy">
+          <div class="integration-grid">
+            <figure class="product-shot notes-shot" data-slot="notes" data-kind="product" data-alt="Scentkeep perfume note catalogue with real ingredient imagery">
+              <img src="assets/notes-1.png" width="1586" height="992" alt="Perfume note catalogue with images of amber, basil, bergamot, black tea and cedar" loading="lazy">
+            </figure>
+            <div class="integration-copy">
+              <p class="integration-reason">Connect when you want faster note entry, source links and images from Parfumo.</p>
+              <ol class="setup-steps">
+                <li><span>Open Settings, then Parfumo account.</span></li>
+                <li><span>Choose Connect Parfumo and sign in there.</span></li>
+                <li><span>Return to Scentkeep and save the session.</span></li>
+              </ol>
+              <p class="integration-note">Your password stays on Parfumo. Scentkeep stores the browser session in your system keyring.</p>
+            </div>
+          </div>
+          <p class="screen-caption">If Cloudflare blocks the connection, reset the embedded browser or continue adding notes by name.</p>
+        </div>
+      </section>
+
+      <section class="feature-section webdav-feature" id="webdav" data-reveal-section>
+        <div class="container webdav-grid">
+          <div class="webdav-copy opens">
+            <h2>A WebDAV folder you control.</h2>
+            <p class="lead">Keep the same readable fragrance and note CSV files beyond this computer.</p>
+            <ol class="setup-steps setup-steps-dark">
+              <li><span>Choose an existing HTTPS WebDAV folder.</span></li>
+              <li><span>Create an app password with your provider.</span></li>
+              <li><span>Enter the URL, username and app password in Settings.</span></li>
+              <li><span>Choose Connect WebDAV.</span></li>
+            </ol>
+            <p class="integration-note">Scentkeep keeps the app password in your system keyring and uploads backups after changes.</p>
+          </div>
+          <figure class="product-shot webdav-shot" data-slot="webdav-settings" data-kind="product" data-alt="Scentkeep settings showing the local backup and WebDAV connection fields">
+            <img src="assets/backup.png" width="1584" height="1000" alt="Scentkeep settings with automatic backup and WebDAV connection controls" loading="lazy">
           </figure>
-          <p class="screen-caption">The note catalogue remains usable without a Parfumo connection.</p>
+        </div>
+      </section>
+
+      <section class="feature-section sync-feature" id="sync" data-reveal-section>
+        <div class="container">
+          <div class="split-heading opens">
+            <h2>Move between devices without starting over.</h2>
+            <p class="lead">Use one WebDAV folder as the handoff point for each Scentkeep installation.</p>
+          </div>
+          <div class="sync-path" aria-label="WebDAV synchronization sequence">
+            <article class="sync-step" data-sync-step>
+              <span class="sync-number">1</span>
+              <h3>Finish here</h3>
+              <p>Let the first device upload its latest CSV backups.</p>
+            </article>
+            <div class="sync-connector" aria-hidden="true"><span></span></div>
+            <article class="sync-step" data-sync-step>
+              <span class="sync-number">2</span>
+              <h3>Connect there</h3>
+              <p>Point the next device at the same WebDAV folder.</p>
+            </article>
+            <div class="sync-connector" aria-hidden="true"><span></span></div>
+            <article class="sync-step" data-sync-step>
+              <span class="sync-number">3</span>
+              <h3>Sync first</h3>
+              <p>Choose Sync from WebDAV before making changes.</p>
+            </article>
+          </div>
+          <p class="sync-caveat">This is a deliberate CSV handoff, not live collaborative editing. Sync before switching devices.</p>
         </div>
       </section>
 
@@ -138,6 +199,8 @@
         <p class="capture-note">Product captures use representative fragrance records and the current Scentkeep interface.</p>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
