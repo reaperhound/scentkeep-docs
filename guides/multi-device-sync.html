@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sync multiple devices | Scentkeep</title>
+    <meta name="description" content="Learn how to keep multiple Scentkeep installations aligned through one WebDAV backup folder.">
+    <link rel="icon" href="../favicon.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../guide.css">
+  </head>
+  <body><a class="skip-link" href="#main">Skip to content</a><header class="site-header guide-header"><div class="container masthead"><a class="wordmark" href="../index.html"><img src="../favicon.png" width="128" height="128" alt=""><span>Scentkeep</span></a><a class="nav-download" href="https://github.com/reaperhound/scentkeep/releases/latest">Download</a></div></header>
+    <main id="main" class="guide-main"><div class="container">
+      <nav class="guide-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><span aria-current="page">Multi-device sync</span></nav>
+      <header class="guide-intro"><h1>Move between devices safely.</h1><div class="guide-intro-copy"><p class="lead">Use one WebDAV folder as the handoff point between Scentkeep installations.</p><p class="guide-summary">This is deliberate CSV synchronization, not live collaborative editing.</p></div></header>
+      <div class="guide-body"><nav class="guide-index" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#first">First device</a></li><li><a href="#next">Next device</a></li><li><a href="#routine">Safe routine</a></li></ol></nav><div class="guide-content">
+        <section class="guide-section" id="first"><h2>Prepare the first device</h2><ol class="guide-steps"><li><div><strong>Connect WebDAV</strong><p>Point Scentkeep to the shared HTTPS folder.</p></div></li><li><div><strong>Make sure changes are saved</strong><p>Scentkeep queues the latest fragrance and note CSV files for upload.</p></div></li><li><div><strong>Wait for the backup</strong><p>Resolve any visible backup error before moving to another device.</p></div></li></ol></section>
+        <section class="guide-section" id="next"><h2>Set up another device</h2><ol class="guide-steps"><li><div><strong>Install Scentkeep</strong><p>Open a fresh or existing installation on the second device.</p></div></li><li><div><strong>Connect the same folder</strong><p>Use the identical WebDAV folder URL and account.</p></div></li><li><div><strong>Choose Sync from WebDAV</strong><p>Do this before adding or editing fragrances on the new device.</p></div></li><li><div><strong>Review the report</strong><p>Scentkeep lists fragrances and notes added or updated.</p></div></li></ol></section>
+        <section class="guide-section" id="routine"><h2>A safe switching routine</h2><p>Finish work on one device, let its backup upload, then sync on the next device before editing. Repeat that sequence whenever you switch.</p><div class="guide-note"><strong>Avoid overlapping edits</strong><p>Do not edit the collection independently on two devices and assume real-time conflict resolution. WebDAV carries the CSV backups; it is not a collaborative database.</p></div></section>
+      </div></div>
+      <div class="guide-next"><div><p>Next guide</p><h2>Understand local backups and CSV files.</h2></div><a href="backups-and-csv.html">Backups and CSV</a></div>
+    </div></main><footer class="site-footer"><div class="container footer-grid"><div class="footer-mark"><a class="footer-wordmark" href="../index.html">Scentkeep</a><p>A desktop journal for the fragrances you keep and remember.</p></div><nav class="footer-links" aria-label="Guide navigation"><a href="webdav.html">WebDAV</a><a href="backups-and-csv.html">Backups</a><a href="collection.html">Collection</a><a href="install.html">Install</a></nav></div></footer>
+  </body>
+</html>

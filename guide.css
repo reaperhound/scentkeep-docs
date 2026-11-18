@@ -1,0 +1,101 @@
+/* Scentkeep feature guides · extends the established editorial system */
+
+.guide-header .wordmark { justify-self: start; }
+.guide-header .masthead { grid-template-columns: minmax(0, 1fr) auto; }
+.guide-header .nav-download { justify-self: end; }
+
+.guide-main { padding-block: var(--space-3xl) var(--section-gap); }
+.guide-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xl);
+  color: var(--color-muted);
+  font-family: var(--font-label);
+  font-size: var(--text-sm);
+}
+.guide-breadcrumb a:hover { color: var(--color-accent); }
+.guide-breadcrumb a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: var(--space-2xs); }
+
+.guide-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-3xl);
+  align-items: end;
+  padding-bottom: var(--space-3xl);
+  border-bottom: var(--rule-heavy) solid var(--color-ink);
+}
+.guide-intro h1 { max-width: 12ch; }
+.guide-intro-copy { min-width: 0; }
+.guide-intro-copy .lead { color: var(--color-ink-2); }
+.guide-summary { margin-top: var(--space-lg); color: var(--color-muted); }
+
+.guide-visual { aspect-ratio: 8 / 5; margin-top: var(--space-3xl); }
+.guide-visual > img { object-position: center top; }
+.guide-body {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--space-3xl);
+  padding-top: var(--section-gap-s);
+}
+.guide-index { align-self: start; }
+.guide-index strong { font-family: var(--font-label); font-weight: 500; }
+.guide-index ol { margin: var(--space-md) 0 0; padding-left: var(--space-lg); color: var(--color-muted); }
+.guide-index li + li { margin-top: var(--space-xs); }
+.guide-index a:hover { color: var(--color-accent); }
+.guide-index a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: var(--space-2xs); }
+
+.guide-content { min-width: 0; }
+.guide-section { padding-block: var(--space-2xl); border-top: var(--rule-hair) solid var(--color-rule-2); }
+.guide-section:first-child { padding-top: 0; border-top: 0; }
+.guide-section h2 { max-width: 18ch; }
+.guide-section > p { margin-top: var(--space-lg); color: var(--color-ink-2); }
+.guide-steps { margin: var(--space-xl) 0 0; padding: 0; list-style: none; counter-reset: guide-step; }
+.guide-steps li {
+  counter-increment: guide-step;
+  display: grid;
+  grid-template-columns: var(--space-xl) minmax(0, 1fr);
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  border-top: var(--rule-hair) solid var(--color-rule);
+}
+.guide-steps li::before {
+  content: counter(guide-step);
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: var(--display-weight);
+  line-height: 1;
+}
+.guide-steps strong { display: block; font-family: var(--font-label); font-weight: 500; }
+.guide-steps p { margin-top: var(--space-xs); color: var(--color-ink-2); }
+.guide-note { padding: var(--space-lg); background: var(--color-paper-2); }
+.guide-note strong { display: block; font-family: var(--font-label); font-weight: 500; }
+.guide-note p { margin-top: var(--space-xs); color: var(--color-ink-2); }
+.guide-code { overflow-x: auto; padding: var(--space-md); background: var(--color-ink); color: var(--color-paper); font-family: var(--font-mono); font-size: var(--text-sm); }
+.guide-next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-xl);
+  align-items: center;
+  margin-top: var(--section-gap-s);
+  padding-top: var(--space-xl);
+  border-top: var(--rule-heavy) solid var(--color-ink);
+}
+.guide-next p { color: var(--color-muted); }
+.guide-next a { font-family: var(--font-label); font-weight: 500; }
+.guide-next a:hover { color: var(--color-accent); }
+.guide-next a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: var(--space-2xs); }
+
+@media (max-width: 60rem) {
+  .guide-intro,
+  .guide-body { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
+  .guide-index { padding-bottom: var(--space-xl); border-bottom: var(--rule-hair) solid var(--color-rule); }
+}
+
+@media (max-width: 40rem) {
+  .guide-main { padding-block-start: var(--space-2xl); }
+  .guide-intro { padding-bottom: var(--space-2xl); }
+  .guide-visual { aspect-ratio: 1 / 1; margin-top: var(--space-2xl); }
+  .guide-next { grid-template-columns: minmax(0, 1fr); }
+}
