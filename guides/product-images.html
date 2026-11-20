@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prepare perfume bottle images | Scentkeep</title>
+    <meta name="description" content="Copy the recommended image-generation prompt for clean, consistent 720 by 720 pixel perfume bottle artwork in Scentkeep.">
+    <link rel="icon" href="../favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../guide.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header guide-header"><div class="container masthead"><a class="wordmark" href="../index.html"><img src="../favicon.png" width="128" height="128" alt=""><span>Scentkeep</span></a><a class="nav-download" href="https://github.com/reaperhound/scentkeep/releases/latest">Download</a></div></header>
+    <main id="main" class="guide-main"><div class="container">
+      <nav class="guide-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="collection.html">Collection guide</a><span>/</span><span aria-current="page">Product images</span></nav>
+      <header class="guide-intro"><h1>Make every bottle belong.</h1><div class="guide-intro-copy"><p class="lead">Use one prompt to create clean, consistent artwork for your collection.</p><p class="guide-summary">Open an image-editing tool, upload the original perfume image, then paste the prompt below.</p></div></header>
+
+      <div class="guide-body prompt-guide-body">
+        <nav class="guide-index" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#before">Before you begin</a></li><li><a href="#prompt">Copy the prompt</a></li></ol></nav>
+        <div class="guide-content">
+          <section class="guide-section" id="before">
+            <h2>Before you begin</h2>
+            <p>Upload only the original perfume image first. This is the image the tool will edit. Image editing happens outside Scentkeep. The 720 × 720 size is a suggested artwork convention, not an app requirement. Check the exported dimensions, transparency and label text; a prompt alone does not guarantee them.</p>
+          </section>
+
+          <section class="guide-section" id="prompt">
+            <div class="prompt-heading">
+              <div><h2>Product image prompt</h2><p>Copy the complete prompt without changing its measurements.</p></div>
+              <button class="button button-primary copy-prompt" type="button" data-copy-target="product-image-prompt" aria-describedby="copy-status">Copy prompt</button>
+            </div>
+            <div class="prompt-surface">
+              <pre id="product-image-prompt" class="image-prompt">Extract only the perfume bottle from the provided image and transform it into a high-quality, professional e-commerce product image.
+
+1. Background Removal
+
+- Completely remove the existing background, including any shadows, decorative elements, props, and surrounding objects.
+- Export the bottle with a fully transparent background (alpha channel).
+- Ensure clean, precise edges without white halos, leftover background pixels, or jagged outlines.
+
+2. Image Enhancement
+
+- Improve sharpness, clarity, and overall image quality.
+- Adjust brightness, contrast, and exposure for balanced, professional studio lighting.
+- Enhance realistic reflections on the glass and cap.
+- Preserve the bottle's original colors, proportions, shape, branding, and label text.
+- Remove unwanted glare, noise, and compression artifacts without making the bottle look artificial.
+
+3. Standardized Sizing
+
+- Set the final image dimensions to exactly 720 × 720 pixels.
+- Resize the extracted bottle proportionally to approximately 600 pixels tall within the 720 × 720 canvas.
+- If a wide bottle would exceed the canvas, scale it down to preserve at least 60 pixels of padding on every side.
+- Center the bottle horizontally and vertically.
+- Maintain its original aspect ratio without stretching, cropping, or distortion.
+- Leave consistent transparent padding around the bottle.
+- Ensure all perfume bottles appear approximately the same height when displayed together in a product grid, regardless of their original image dimensions.
+
+4. Export Requirements
+
+- Format: PNG
+- Resolution: 720 × 720 px
+- Background: 100% transparent
+- Quality: High-resolution, sharp, clean product photography
+- Alignment: Centered
+- No added text, borders, watermarks, artificial drop shadows, or decorative backgrounds.
+
+Final result: A clean, premium-quality perfume bottle PNG with transparent surroundings, consistent visual height, and standardized dimensions, ready to use in a perfume collection website with white product cards.</pre>
+            </div>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            <noscript><p class="guide-note">Select the prompt text manually to copy it. The copy button requires JavaScript.</p></noscript>
+          <p>To use the result, host the PNG at an accessible image URL and paste that URL into the fragrance record’s Image URL field. Scentkeep does not upload a local PNG from this guide.</p></section>
+        </div>
+      </div>
+
+      <div class="guide-next"><div><p>Back to the collection</p><h2>Link the finished bottle to its record.</h2></div><a href="collection.html">Collection guide</a></div>
+    </div></main>
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-mark"><a class="footer-wordmark" href="../index.html">Scentkeep</a><p>A desktop journal for the fragrances you keep and remember.</p></div><nav class="footer-links" aria-label="Guide navigation"><a href="collection.html">Collection</a><a href="fragrance-records.html">Records</a><a href="parfumo.html">Parfumo</a><a href="install.html">Install</a></nav></div></footer>
+    <script src="../script.js"></script>
+  </body>
+</html>

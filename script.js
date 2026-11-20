@@ -15,6 +15,90 @@ document.querySelectorAll('[data-slot] img').forEach((image) => {
   else image.addEventListener('error', () => image.remove(), { once: true });
 });
 
+const navToggle = document.querySelector('.nav-toggle');
+const primaryNavigation = document.getElementById('primary-navigation');
+
+if (navToggle && primaryNavigation) {
+  const closeNavigation = () => {
+    navToggle.setAttribute('aria-expanded', 'false');
+    primaryNavigation.classList.remove('is-open');
+  };
+
+  navToggle.addEventListener('click', () => {
+    const willOpen = navToggle.getAttribute('aria-expanded') !== 'true';
+    navToggle.setAttribute('aria-expanded', String(willOpen));
+    primaryNavigation.classList.toggle('is-open', willOpen);
+  });
+
+  primaryNavigation.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeNavigation();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      closeNavigation();
+      navToggle.focus();
+    }
+  });
+
+  window.matchMedia('(min-width: 60.0625rem)').addEventListener('change', closeNavigation);
+}
+
+const sectionLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+const navigationSections = sectionLinks
+  .map((link) => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+
+if ('IntersectionObserver' in window && navigationSections.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visibleSection = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visibleSection) return;
+
+    sectionLinks.forEach((link) => {
+      if (link.getAttribute('href') === `#${visibleSection.target.id}`) {
+        link.setAttribute('aria-current', 'location');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }, { rootMargin: '-25% 0px -60%', threshold: [0, 0.2, 0.5] });
+
+  navigationSections.forEach((section) => sectionObserver.observe(section));
+}
+
+document.querySelectorAll('[data-copy-target]').forEach((button) => {
+  const target = document.getElementById(button.dataset.copyTarget);
+  const status = button.getAttribute('aria-describedby')
+    ? document.getElementById(button.getAttribute('aria-describedby'))
+    : null;
+  const originalLabel = button.textContent;
+
+  if (!target) return;
+
+  button.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(target.textContent.trim());
+      button.textContent = 'Copied';
+      if (status) status.textContent = 'The complete product image prompt is ready to paste.';
+    } catch {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      button.textContent = 'Select and copy';
+      if (status) status.textContent = 'The prompt is selected. Use your device copy command.';
+    }
+
+    window.setTimeout(() => {
+      button.textContent = originalLabel;
+    }, 2400);
+  });
+});
+
 const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (!motionQuery.matches && window.gsap && window.ScrollTrigger) {

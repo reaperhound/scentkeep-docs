@@ -20,12 +20,16 @@
           <img src="favicon.png" width="128" height="128" alt="">
           <span>Scentkeep</span>
         </a>
-        <nav class="site-nav" aria-label="Main navigation">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span>Menu</span>
+          <span class="nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
           <a href="#collection">Collection</a>
-          <a href="#parfumo">Parfumo</a>
-          <a href="#webdav">WebDAV</a>
-          <a href="#sync">Sync</a>
-          <a href="https://github.com/reaperhound/scentkeep" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#details">Fragrance records</a>
+          <a href="#backups">Backups</a>
+          <a href="guides/collection.html">Guides</a>
+          <a href="https://github.com/reaperhound/scentkeep" target="_blank" rel="noreferrer" aria-label="Scentkeep on GitHub (opens in a new tab)">GitHub</a>
         </nav>
         <a class="nav-download" href="https://github.com/reaperhound/scentkeep/releases/latest">Download</a>
       </div>
@@ -76,7 +80,7 @@
             <h2>Notes, ratings, one record.</h2>
             <p class="lead">Keep the facts, the note pyramid and your own impressions together.</p>
             <dl class="record-index">
-              <div><dt>Notes</dt><dd>Top, heart and base layers in the order you smell them.</dd></div>
+              <div><dt>Notes</dt><dd>Top, heart and base layers of the fragrance pyramid.</dd></div>
               <div><dt>Context</dt><dd>Brand, collection, year, concentration, perfumer and description.</dd></div>
               <div><dt>Ratings</dt><dd>Scent, longevity, sillage, bottle and value, recorded for you.</dd></div>
             </dl>
@@ -117,7 +121,7 @@
             <p class="lead">Keep the same readable fragrance and note CSV files beyond this computer.</p>
             <ol class="setup-steps setup-steps-dark">
               <li><span>Choose an existing HTTPS WebDAV folder.</span></li>
-              <li><span>Create an app password with your provider.</span></li>
+              <li><span>Create an app password if your provider supports it.</span></li>
               <li><span>Enter the URL, username and app password in Settings.</span></li>
               <li><span>Choose Connect WebDAV.</span></li>
             </ol>
@@ -155,7 +159,7 @@
               <p>Choose Sync from WebDAV before making changes.</p>
             </article>
           </div>
-          <p class="sync-caveat">This is a deliberate CSV handoff, not live collaborative editing. Sync before switching devices.</p>
+          <p class="sync-caveat">Sync merges records and overwrites matching local values. Deletions do not propagate. Export existing data before the first sync, and sync before switching devices.</p>
           <a class="guide-link" href="guides/multi-device-sync.html">How to sync multiple devices</a>
         </div>
       </section>
@@ -202,9 +206,10 @@
           <a href="https://github.com/reaperhound/scentkeep/releases/latest">Releases</a>
           <a href="https://github.com/reaperhound/scentkeep#readme">Readme</a>
           <a href="guides/collection.html">Feature guides</a>
+          <a href="guides/product-images.html">Product image prompt</a>
           <a href="#top">Back to top</a>
         </nav>
-        <p class="capture-note">Product captures use representative fragrance records and the current Scentkeep interface.</p>
+        <p class="capture-note">Product captures use representative fragrance records and a development interface. Layouts may differ from the downloadable release.</p>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

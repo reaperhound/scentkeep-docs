@@ -2,21 +2,23 @@
 
 ## Assignment
 
-Build a public marketing website for **Scentkeep**, the desktop fragrance journal in this repository. The page's main job is to send visitors to the [latest GitHub release](https://github.com/reaperhound/scentkeep/releases/latest) to download the app. The audience is fragrance collectors who want to catalogue bottles, remember what they liked, and keep control of their records.
+Build a public marketing website for **Scentkeep**, the desktop fragrance journal in the sibling `../scentkeep` repository. The page's main job is to send visitors to the [latest GitHub release](https://github.com/reaperhound/scentkeep/releases/latest) to download the app. The audience is fragrance collectors who want to catalogue bottles, remember what they liked, and keep control of their records.
 
 Use [OpenWhispr](https://openwhispr.com/) as **structural inspiration**: a plain product promise, an unmistakable download action, a real product visual in the first screen, feature demonstrations, practical trust information, and a repeated download close. Create Scentkeep's own design and copy. Do not copy OpenWhispr's wording, graphics, logo, claims, layout dimensions, or colour palette.
 
-**Working assumption:** the website is a separate public site; this SvelteKit route is the desktop app. Do not replace `src/routes/+page.svelte` with a landing page. Decide the site's repository and hosting with the owner before publishing, but the design and implementation can proceed independently.
+**Repository boundary:** this repository is the static public website; the sibling app repository contains the SvelteKit desktop app. Do not replace `src/routes/+page.svelte` with a landing page. Decide the site's repository and hosting with the owner before publishing, but the design and implementation can proceed independently.
 
 ## Product truth
 
-Source of truth: [README.md](../scentkeep/README.md), [release notes](../scentkeep/RELEASE_NOTES.md), the application UI in [src/routes/+page.svelte](../scentkeep/src/routes/+page.svelte), and [current design tokens](../scentkeep/src/routes/tokens.css). Check the latest release before publishing copy.
+Release audit (2026-11-18): the latest published release is [v0.2.4](https://github.com/reaperhound/scentkeep/releases/tag/v0.2.4), commit `3052f8af528d02283e4740188309ff2791618e48`. Its tagged code includes WebDAV backup/sync, accords, expanded CSV fields, and signed in-app updates. The local README CSV schema and draft “changes since v0.1.8” notes are stale; use tagged source when they disagree. See [CONTENT_AUDIT.md](CONTENT_AUDIT.md) for evidence and limitations.
+
+Source references: [README.md](../scentkeep/README.md), [release notes](../scentkeep/RELEASE_NOTES.md), the application UI in [src/routes/+page.svelte](../scentkeep/src/routes/+page.svelte), and [current design tokens](../scentkeep/src/routes/tokens.css). Check the latest release before publishing copy.
 
 | Safe to describe from the README and app | Qualify or verify before promoting |
 | --- | --- |
-| Desktop fragrance collection with brand, collection, year, perfumer, description, ratings, and top, heart, and base notes | WebDAV backup and its sync flow are in draft release notes; confirm they are in the linked release |
-| Collection, wishlist, and empties shelves; search and browse | Accord visualization appears in current code; confirm its release status and capture it before making it a headline feature |
-| Local collection storage; local CSV backup folder; fragrance and note CSV import/export | Do not claim end to end encryption, cloud sync, mobile support, or automatic identification |
+| Desktop fragrance collection with brand, collection, year, perfumer, description, ratings, and top, heart, and base notes | WebDAV backup and merge sync are in v0.2.4; matching remote records overwrite local values and deletions do not propagate |
+| Collection, wishlist, and empties shelves; search and browse | Accord visualization is in v0.2.4; avoid promising complete accord coverage for every record |
+| Local collection storage; local CSV backup folder; fragrance and note CSV import/export | Do not claim end to end encryption, live conflict-aware sync, mobile support, or automatic identification |
 | Optional Parfumo connection for note search; manual note entry still works | Parfumo connection can be blocked by Cloudflare verification; do not promise that it always works |
 | Windows, macOS, and Linux downloads listed in the README | Windows and macOS installers may show an unsigned app warning; keep install guidance accurate |
 
@@ -43,7 +45,7 @@ Aim for one idea per screen, roughly 6–7 sections including the hero and foote
 2. **The collection.** Show a real collection grid, then a close crop of search or shelf filtering. Message: keep owned fragrances, wishlists, and empties in one place. Use the application's actual names and controls.
 3. **Every fragrance has a story.** Show a fragrance detail screen large enough to read the name, brand, note layers, and rating. Copy should focus on the useful record, not vague lifestyle claims.
 4. **Notes, your way.** Show the top/heart/base note entry flow or the perfume note catalogue. Explain that users can maintain notes manually and optionally search notes through a connected Parfumo account. If the integration complicates the story, keep the page focused on manual note records.
-5. **Keep the collection in your hands.** A restrained, text-led section for local storage, CSV export/import, and automatic local CSV backups. Explain the backup folder in honest language. Add WebDAV only after confirming it is in the linked release.
+5. **Keep the collection in your hands.** A restrained, text-led section for local storage, CSV export/import, and automatic local CSV backups. Explain the backup folder in honest language. WebDAV is verified in v0.2.4; explain its merge and deletion limitations.
 6. **Download and install.** Repeat the download action, list supported desktop systems and link to the release's actual artifacts or install instructions. State the unsigned installer note where needed. No pricing block unless a real paid offer exists.
 7. **Footer.** GitHub repository, releases, README or docs, license if verified, and a concise product description. No fabricated company address or legal links.
 
@@ -68,4 +70,4 @@ The page passes when a new visitor can tell within the first screen what Scentke
 
 ## Open decisions for the owner
 
-Before publication, confirm the website's destination repository/domain, approve the final logo and screenshots, and confirm whether the current GitHub release includes WebDAV backup and accord visualization. None of these choices prevents preparing the page and assets.
+Before publication, confirm the website's destination repository/domain, approve the final logo and screenshots, and replace or approve the development-interface captures with release-matched screenshots. None of these choices prevents preparing the page and assets.
