@@ -1,83 +1,93 @@
-window.hallmarkSlots = (mapping) => {
-  for (const [key, value] of Object.entries(mapping)) {
-    const slot = document.querySelector(`[data-slot="${key}"]`);
-    if (!slot) continue;
-    const image = new Image();
-    image.src = typeof value === 'string' ? value : value.src;
-    image.alt = (typeof value === 'object' && value.alt) || slot.dataset.alt || '';
-    slot.querySelectorAll(':scope > img').forEach((oldImage) => oldImage.remove());
-    slot.prepend(image);
-  }
-};
-
-document.querySelectorAll('[data-slot] img').forEach((image) => {
-  if (image.complete && !image.naturalWidth) image.remove();
-  else image.addEventListener('error', () => image.remove(), { once: true });
-});
+document.body.classList.add('js');
 
 const navToggle = document.querySelector('.nav-toggle');
 const primaryNavigation = document.getElementById('primary-navigation');
-
 if (navToggle && primaryNavigation) {
   const closeNavigation = () => {
     navToggle.setAttribute('aria-expanded', 'false');
     primaryNavigation.classList.remove('is-open');
   };
-
   navToggle.addEventListener('click', () => {
-    const willOpen = navToggle.getAttribute('aria-expanded') !== 'true';
-    navToggle.setAttribute('aria-expanded', String(willOpen));
-    primaryNavigation.classList.toggle('is-open', willOpen);
+    const open = navToggle.getAttribute('aria-expanded') !== 'true';
+    navToggle.setAttribute('aria-expanded', String(open));
+    primaryNavigation.classList.toggle('is-open', open);
   });
-
   primaryNavigation.addEventListener('click', (event) => {
     if (event.target.closest('a')) closeNavigation();
   });
-
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.masthead')) closeNavigation();
+  });
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
       closeNavigation();
       navToggle.focus();
     }
   });
-
   window.matchMedia('(min-width: 60.0625rem)').addEventListener('change', closeNavigation);
 }
 
-const sectionLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
-const navigationSections = sectionLinks
-  .map((link) => document.querySelector(link.getAttribute('href')))
-  .filter(Boolean);
-
-if ('IntersectionObserver' in window && navigationSections.length) {
-  const sectionObserver = new IntersectionObserver((entries) => {
-    const visibleSection = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visibleSection) return;
-
-    sectionLinks.forEach((link) => {
-      if (link.getAttribute('href') === `#${visibleSection.target.id}`) {
-        link.setAttribute('aria-current', 'location');
-      } else {
-        link.removeAttribute('aria-current');
-      }
+const tabs = [...document.querySelectorAll('.feature-tab')];
+const selectTab = (selected) => {
+  tabs.forEach((tab) => {
+    const active = tab === selected;
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
+    document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
+  });
+};
+if (tabs.length) {
+  selectTab(tabs[0]);
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectTab(tab));
+    tab.addEventListener('keydown', (event) => {
+      let next;
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      if (next === undefined) return;
+      event.preventDefault();
+      selectTab(tabs[next]);
+      tabs[next].focus();
     });
-  }, { rootMargin: '-25% 0px -60%', threshold: [0, 0.2, 0.5] });
+  });
+}
 
-  navigationSections.forEach((section) => sectionObserver.observe(section));
+const search = document.getElementById('guide-search');
+if (search) {
+  const cards = [...document.querySelectorAll('[data-guide-search]')];
+  const normalize = (text) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const filterGuides = () => {
+    const terms = normalize(search.value.trim()).split(/\s+/).filter(Boolean);
+    let count = 0;
+    cards.forEach((card) => {
+      const content = normalize(`${card.dataset.guideSearch} ${card.textContent}`);
+      card.hidden = !terms.every((term) => content.includes(term));
+      if (!card.hidden) count++;
+    });
+    document.getElementById('no-results').hidden = count !== 0;
+    document.getElementById('search-status').textContent = `${count} ${count === 1 ? 'guide' : 'guides'} found.`;
+  };
+  search.addEventListener('input', filterGuides);
+  filterGuides();
+  document.addEventListener('keydown', (event) => {
+    if (event.key === '/' && !event.ctrlKey && !event.metaKey && !event.altKey && !event.target.closest('input, textarea, select, [contenteditable]')) {
+      event.preventDefault();
+      search.focus();
+    }
+    if (event.key === 'Escape' && document.activeElement === search) {
+      search.value = '';
+      filterGuides();
+    }
+  });
 }
 
 document.querySelectorAll('[data-copy-target]').forEach((button) => {
   const target = document.getElementById(button.dataset.copyTarget);
-  const status = button.getAttribute('aria-describedby')
-    ? document.getElementById(button.getAttribute('aria-describedby'))
-    : null;
-  const originalLabel = button.textContent;
-
+  const status = document.getElementById(button.getAttribute('aria-describedby'));
+  const label = button.textContent;
   if (!target) return;
-
   button.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(target.textContent.trim());
@@ -92,37 +102,6 @@ document.querySelectorAll('[data-copy-target]').forEach((button) => {
       button.textContent = 'Select and copy';
       if (status) status.textContent = 'The prompt is selected. Use your device copy command.';
     }
-
-    window.setTimeout(() => {
-      button.textContent = originalLabel;
-    }, 2400);
+    window.setTimeout(() => { button.textContent = label; }, 2400);
   });
 });
-
-const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-if (!motionQuery.matches && window.gsap && window.ScrollTrigger) {
-  window.gsap.registerPlugin(window.ScrollTrigger);
-
-  document.querySelectorAll('[data-reveal-section]').forEach((section) => {
-    const revealItems = section.querySelectorAll('h2, .lead, .product-shot, .integration-copy, .sync-caveat');
-    window.gsap.from(revealItems, {
-      scrollTrigger: { trigger: section, start: 'top 78%', once: true },
-      y: 16,
-      opacity: 0,
-      duration: 0.62,
-      stagger: 0.07,
-      ease: 'power3.out'
-    });
-  });
-
-  const syncPath = document.querySelector('.sync-path');
-  if (syncPath) {
-    const timeline = window.gsap.timeline({
-      scrollTrigger: { trigger: syncPath, start: 'top 76%', once: true }
-    });
-    timeline
-      .from(syncPath.querySelectorAll('[data-sync-step]'), { y: 12, opacity: 0, duration: 0.5, stagger: 0.16, ease: 'power3.out' })
-      .from(syncPath.querySelectorAll('.sync-connector span'), { scaleX: 0, duration: 0.34, stagger: 0.16, ease: 'power2.out' }, 0.18);
-  }
-}

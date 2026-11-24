@@ -1,1 +1,4 @@
 .hallmark/
+graphify-out/
+.mcp.json
+.codex/
