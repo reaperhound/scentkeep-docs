@@ -1,5 +1,24 @@
 # Scentkeep content audit
 
+## Feature coverage review — 2026-11-24
+
+Verified the sibling app checkout at commit `87f4a2ba667561380e2dd973d64cfb3556b7f02e` against the peeled `v0.2.9` tag: no differences. The GitHub releases API confirmed v0.2.9 as the latest published release on 2026-11-24. This supersedes the release-version references in the historical audit below.
+
+Added coverage for:
+
+- Parfumo fragrance search and URL import, preview/application/save steps, linked imagery, imported note metadata and source attribution (`src/lib/screens/EditorScreen.svelte`).
+- Eleven named palettes, dark mode, system-default appearance and local preference persistence (`src/lib/screens/SettingsScreen.svelte`). Appearance is separate from CSV/WebDAV data. Also documented the local profile name and linked picture editor (`src/lib/screens/AppDialogs.svelte` and `src/routes/+page.svelte`).
+- Note usage counts, shared rename/delete behavior, category editing, image management and note-library pagination (`src/lib/screens/NotesScreen.svelte` and `src/routes/+page.svelte`).
+- Main accords estimated from note categories, up to seven results, relative normalization against the strongest accord, contributing-note tooltips and missing-category guidance (`src/lib/AccordBars.svelte` and `src-tauri/src/accords.rs`).
+- Backup failure Retry and the pending-backup close warning (`src/routes/+page.svelte` and `src/lib/screens/AppDialogs.svelte`).
+- Collection-name search, All/Owned filter semantics, 12-record pagination, card edit/delete actions, the three-step editor, bottle counts, prices and favourites (`src/lib/screens/CollectionScreen.svelte`, `EditorScreen.svelte`, `DetailsScreen.svelte`).
+
+Confirmed that CSV still exports 21 fragrance columns and four note columns (`src-tauri/src/csv_io.rs`). Excel files are still rejected by the importer even though the picker lists workbook extensions (`src/routes/+page.svelte`). Existing CSV, WebDAV, sync and installation guidance remains relevant.
+
+New guides are linked from the homepage search and every guide sidebar. Existing development screenshots are retained with their disclosure; no release-matched screenshot claims were added. Review used released source; it did not exercise live Parfumo login, provider-specific WebDAV, or all platform installers.
+
+## Historical audit — 2026-11-18
+
 Reviewed 2026-11-18 for the request labeled ASD-SET100. No definition of that label was found locally; this records a factual documentation audit, not certification against an unknown checklist.
 
 ## Evidence

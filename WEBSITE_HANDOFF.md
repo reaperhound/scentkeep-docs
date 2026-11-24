@@ -10,14 +10,14 @@ Use [OpenWhispr](https://openwhispr.com/) as **structural inspiration**: a plain
 
 ## Product truth
 
-Release audit (2026-11-18): the latest published release is [v0.2.4](https://github.com/reaperhound/scentkeep/releases/tag/v0.2.4), commit `3052f8af528d02283e4740188309ff2791618e48`. Its tagged code includes WebDAV backup/sync, accords, expanded CSV fields, and signed in-app updates. The local README CSV schema and draft “changes since v0.1.8” notes are stale; use tagged source when they disagree. See [CONTENT_AUDIT.md](CONTENT_AUDIT.md) for evidence and limitations.
+Release audit (2026-11-24): the latest published release is [v0.2.9](https://github.com/reaperhound/scentkeep/releases/tag/v0.2.9), commit `87f4a2ba667561380e2dd973d64cfb3556b7f02e`. The local app checkout matches that tag. It includes Parfumo fragrance import, 11 appearance palettes with light/dark modes, note-library management, category-derived accords, WebDAV backup/sync, expanded CSV fields and in-app updates. See [CONTENT_AUDIT.md](CONTENT_AUDIT.md) for the current feature review and historical evidence. Read released source when older README/release notes disagree.
 
 Source references: [README.md](../scentkeep/README.md), [release notes](../scentkeep/RELEASE_NOTES.md), the application UI in [src/routes/+page.svelte](../scentkeep/src/routes/+page.svelte), and [current design tokens](../scentkeep/src/routes/tokens.css). Check the latest release before publishing copy.
 
 | Safe to describe from the README and app | Qualify or verify before promoting |
 | --- | --- |
-| Desktop fragrance collection with brand, collection, year, perfumer, description, ratings, and top, heart, and base notes | WebDAV backup and merge sync are in v0.2.4; matching remote records overwrite local values and deletions do not propagate |
-| Collection, wishlist, and empties shelves; search and browse | Accord visualization is in v0.2.4; avoid promising complete accord coverage for every record |
+| Desktop fragrance collection with brand, collection, year, perfumer, description, ratings, and top, heart, and base notes | WebDAV backup and merge sync are in v0.2.9; matching remote records overwrite local values and deletions do not propagate |
+| Collection, wishlist, and empties shelves; search and browse | Accord visualization is in v0.2.9; avoid promising complete accord coverage for every record |
 | Local collection storage; local CSV backup folder; fragrance and note CSV import/export | Do not claim end to end encryption, live conflict-aware sync, mobile support, or automatic identification |
 | Optional Parfumo connection for note search; manual note entry still works | Parfumo connection can be blocked by Cloudflare verification; do not promise that it always works |
 | Windows, macOS, and Linux downloads listed in the README | Windows and macOS installers may show an unsigned app warning; keep install guidance accurate |
@@ -45,7 +45,7 @@ Aim for one idea per screen, roughly 6–7 sections including the hero and foote
 2. **The collection.** Show a real collection grid, then a close crop of search or shelf filtering. Message: keep owned fragrances, wishlists, and empties in one place. Use the application's actual names and controls.
 3. **Every fragrance has a story.** Show a fragrance detail screen large enough to read the name, brand, note layers, and rating. Copy should focus on the useful record, not vague lifestyle claims.
 4. **Notes, your way.** Show the top/heart/base note entry flow or the perfume note catalogue. Explain that users can maintain notes manually and optionally search notes through a connected Parfumo account. If the integration complicates the story, keep the page focused on manual note records.
-5. **Keep the collection in your hands.** A restrained, text-led section for local storage, CSV export/import, and automatic local CSV backups. Explain the backup folder in honest language. WebDAV is verified in v0.2.4; explain its merge and deletion limitations.
+5. **Keep the collection in your hands.** A restrained, text-led section for local storage, CSV export/import, and automatic local CSV backups. Explain the backup folder in honest language. WebDAV is verified in v0.2.9; explain its merge and deletion limitations.
 6. **Download and install.** Repeat the download action, list supported desktop systems and link to the release's actual artifacts or install instructions. State the unsigned installer note where needed. No pricing block unless a real paid offer exists.
 7. **Footer.** GitHub repository, releases, README or docs, license if verified, and a concise product description. No fabricated company address or legal links.
 
