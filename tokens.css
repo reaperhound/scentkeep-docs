@@ -1,47 +1,29 @@
-@import url("./assets/serendie-tokens.css");
-
+@font-face { font-family: Nunito; font-style: normal; font-weight: 200 1000; font-display: swap; src: url('./assets/fonts/nunito-latin.woff2') format('woff2'); }
 :root {
   color-scheme: light;
-  --color-paper: #fbf9f5;
-  --color-paper-2: var(--sd-system-color-impression-tertiary);
-  --color-paper-3: var(--sd-system-color-component-inversePrimary);
-  --color-ink: var(--sd-system-color-component-inverseSurface);
-  --color-ink-2: #45423e;
-  --color-muted: #68645e;
-  --color-rule: var(--sd-system-color-component-outline);
-  --color-rule-2: var(--sd-system-color-component-outlineDim);
-  --color-accent: var(--sd-system-color-impression-primary);
-  --color-accent-ink: var(--sd-system-color-impression-onPrimary);
-  --color-focus: var(--color-accent);
-  --color-white: var(--sd-system-color-component-surface);
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-label: var(--font-body);
-  --font-mono: ui-monospace, monospace;
-  --display-weight: 400;
-  --tracking-display: -0.035em;
-  --space-3xs: 2px;
-  --space-2xs: var(--sd-system-dimension-spacing-twoExtraSmall);
-  --space-xs: var(--sd-system-dimension-spacing-extraSmall);
-  --space-sm: var(--sd-system-dimension-spacing-small);
-  --space-md: var(--sd-system-dimension-spacing-medium);
-  --space-lg: var(--sd-system-dimension-spacing-extraLarge);
-  --space-xl: var(--sd-system-dimension-spacing-threeExtraLarge);
-  --space-2xl: var(--sd-system-dimension-spacing-fiveExtraLarge);
-  --space-3xl: var(--sd-system-dimension-spacing-sixExtraLarge);
-  --space-4xl: 128px;
-  --text-xs: .75rem; --text-sm: .875rem; --text-md: 1rem; --text-lg: 1.125rem;
-  --text-title: 1.5rem; --text-lead: clamp(1.0625rem, 1.3vw, 1.1875rem);
-  --text-display: clamp(3.5rem, 6.4vw, 6rem);
-  --text-section: clamp(2.25rem, 4vw, 3.75rem);
-  --container: 1320px; --gutter: 48px;
-  --section-gap: 112px; --section-gap-s: 80px; --gap-columns: 32px;
-  --rule-hair: 1px; --rule-heavy: 1px;
-  --radius-card: var(--sd-system-dimension-radius-extraLarge);
-  --radius-pill: var(--sd-system-dimension-radius-full);
-  --header-height: 88px;
-  --z-sticky-nav: 100; --z-toast: 200;
+  --color-paper: #fff; --color-paper-2: #f4f3fc; --color-paper-3: #e9e7ff;
+  --color-ink: #1d1a4a; --color-ink-2: #3d386b; --color-muted: #625d84;
+  --color-rule: #dcdaf0; --color-rule-2: #b8b3e3; --color-accent: #6554c0;
+  --color-accent-ink: #1d1a4a; --color-focus: #b42370; --color-white: #fff;
+  --color-action: #ff5fa8; --color-card: #fff; --color-control-shadow: #b8b3ff;
+  --color-primary: #b8b3ff; --color-pink: #ffe1ef;
+  --font-display: Nunito, 'Avenir Next', sans-serif; --font-body: Nunito, 'Avenir Next', sans-serif;
+  --font-label: var(--font-body); --font-mono: ui-monospace, monospace;
+  --display-weight: 850; --tracking-display: -.035em;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px;
+  --space-md: 16px; --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+  --space-3xl: 64px; --space-4xl: 112px;
+  --text-xs: .8125rem; --text-sm: .9375rem; --text-md: 1rem; --text-lg: 1.125rem;
+  --text-title: 1.5rem; --text-lead: clamp(1.0625rem, 1.4vw, 1.2rem);
+  --text-display: clamp(2.75rem, 5.9vw, 5rem); --text-section: clamp(2rem, 3.5vw, 3.2rem);
+  --container: 1280px; --gutter: 48px; --section-gap: 100px; --section-gap-s: 64px;
+  --gap-columns: 28px; --rule-hair: 1.5px; --rule-heavy: 3px; --radius-card: 16px;
+  --radius-pill: 999px; --header-height: 82px; --z-sticky-nav: 100; --z-toast: 200;
   --dur-short: 180ms; --ease-out: cubic-bezier(.16,1,.3,1);
+  --sd-system-dimension-spacing-twoExtraLarge: 28px;
+  --sd-system-dimension-radius-small: 8px; --sd-system-dimension-radius-medium: 12px;
+  --sd-system-dimension-radius-large: 16px; --sd-system-dimension-radius-extraLarge: 16px;
+  --sd-system-dimension-spacing-medium: 16px;
 }
-@media (max-width: 60rem) { :root { --gutter: 28px; --section-gap: 80px; --section-gap-s: 56px; } }
-@media (max-width: 40rem) { :root { --gutter: 20px; --section-gap: 64px; --section-gap-s: 40px; --header-height: 76px; } }
+@media(max-width:60rem){:root{--gutter:28px;--section-gap:76px;--section-gap-s:48px}}
+@media(max-width:40rem){:root{--gutter:20px;--section-gap:64px;--section-gap-s:40px;--header-height:74px}}

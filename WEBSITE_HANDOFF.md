@@ -24,18 +24,15 @@ Source references: [README.md](../scentkeep/README.md), [release notes](../scent
 
 Do not invent counts, testimonials, ratings, perfume brand endorsements, security certifications, or prices. If the current release differs from the repo, describe the release users can actually download.
 
-## Design direction
+## Design direction (superseded 2026-11-25)
 
-**Concept: a personal scent archive.** The page should feel like an editorial perfume catalogue translated into a useful desktop product: warm paper, dark ink, quiet rules, carefully cropped bottle photography if rights are clear, and large, legible app captures. The existing app uses Sentient for display type, Hanken Grotesk for body type, and warm paper with a restrained cool accent; use its tokens as a starting point so the site and app feel related. Build a focused visual system with all colours and fonts declared as tokens.
+The owner requested the Sakuga VFX gallery's components, animation and design language across the homepage and all eleven guides, and selected direct implementation rather than an image mockup. This supersedes the earlier warm-paper editorial direction. `DESIGN.md`, `PRODUCT.md` and `.impeccable/surfaces/index-html.md` describe the current implementation and scope.
 
-The memorable first-screen image is the **real Scentkeep collection**, with several non-personal sample fragrances visible. Keep UI text legible. Display the capture directly in the composition, without a fake browser or device frame. A small close crop of a fragrance detail or its note pyramid may overlap only if it remains clear and truthful. At 1280 × 800, the headline, one-sentence explanation, primary button, and meaningful portion of the product capture must all be visible.
+The shipped world uses white/lilac surfaces, deep violet ink, Nunito typography, rounded outlined components, lavender control shadows, and spring motion with a locally bundled Sakuga effects engine. The real app is the first-screen proof, with keyboard-accessible collection/details/notes screenshot tabs. Download links still lead to the GitHub release page. All guide article content is preserved.
 
-Suggested hero copy, subject to product review:
+Current screenshots come from the running sibling application frontend on 2026-11-25, with isolated demonstration IPC responses. Public product metadata and existing artwork appear alongside sample ratings/accords; profiles, purchase prices, credentials, private descriptions and personal paths do not. Captions disclose sample records. These are frontend captures, not captures of a packaged release or a live integration session.
 
-> **Your scents, kept close.**  
-> A private desktop journal for the fragrances you own and remember.
-
-Primary action: **Download Scentkeep** → latest release. Secondary text link: **See the collection** → first demonstration section. Under the action, name Windows, macOS, and Linux in plain text; do not suggest a platform-specific installer can be selected until the site actually implements that selection.
+The outline below records the earlier content brief; shipped structure and tokens are documented in DESIGN.md.
 
 ## Page outline
 

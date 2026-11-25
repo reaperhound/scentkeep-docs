@@ -105,3 +105,14 @@ document.querySelectorAll('[data-copy-target]').forEach((button) => {
     window.setTimeout(() => { button.textContent = label; }, 2400);
   });
 });
+
+const guideNavigation = document.querySelector('.guide-navigation');
+if (guideNavigation) {
+  const compactGuides = window.matchMedia('(max-width: 60rem)');
+  const currentGuide = guideNavigation.querySelector('[aria-current="page"]');
+  const summary = guideNavigation.querySelector('summary');
+  if (currentGuide && summary) summary.textContent = `Guides · ${currentGuide.textContent.trim()}`;
+  const syncGuideNavigation = () => { guideNavigation.open = !compactGuides.matches; };
+  syncGuideNavigation();
+  compactGuides.addEventListener('change', syncGuideNavigation);
+}

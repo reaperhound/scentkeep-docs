@@ -17,3 +17,4 @@ button, summary { cursor: pointer; }
 .eyebrow { display: block; font: 500 var(--text-xs)/1.5 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+svg{display:inline-block;vertical-align:middle}a svg{width:18px;height:18px;flex-shrink:0}::selection{background:#d9d4ff;color:#1d1a4a}html{scrollbar-color:#b8b3e3 #f4f3fc;scrollbar-width:thin}input{caret-color:var(--color-focus)}

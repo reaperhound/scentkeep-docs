@@ -17,17 +17,24 @@ Official setup: https://serendie.design/en/ai/mcp-server/
 
 ## Design system
 
-`assets/serendie-tokens.css` is a checked-in snapshot of system dimensions and Kurikawa colours retrieved using the MCP `get-design-tokens` tool on 2026-11-24. `tokens.css` maps these to the site's semantic tokens and defines the additional editorial typography and paper colours. Token CSS can be used independently of the React component library; this website keeps its native HTML architecture.
+The website follows the [Sakuga VFX gallery](https://sakuga-vfx.vercel.app/gallery/) at the owner's request: white/lilac surfaces, violet ink, rounded outlined controls, lavender offset shadows, and spring squash/overshoot with drawn effects. `tokens.css` contains the semantic tokens and self-hosted Nunito font. `DESIGN.md` and `.impeccable/design.json` document the shipped system. The earlier Serendie snapshot remains an authoring reference; it is not imported by the redesigned website.
 
-- `styles.css` and `base.css`: shared layout and homepage.
+- `styles.css` and `base.css`: shared navigation, components and homepage.
 - `guide.css`: all eleven documentation pages.
-- `script.js`: mobile navigation, keyboard product tabs, guide search and prompt copying.
-- `guides/`: installation, collection, fragrance records, Parfumo connection and fragrance import, the note library and accords, appearance, CSV backups, WebDAV, sync and product images.
+- `script.js`: mobile navigation, keyboard screenshot tabs, guide search and prompt copying.
+- `motion.js`: native control animation and reduced-motion handling.
+- `assets/vendor/sakuga/`: local MIT-licensed Sakuga effects engine, reused from the app; no external runtime requests.
+- `assets/fonts/`: self-hosted Nunito Latin subset and OFL license.
+- `guides/`: installation, collection, fragrance records, Parfumo, notes, appearance, backups, WebDAV, sync and product images.
 
-Search filters guide titles, summaries and topic keywords. It is not a full-text article index. The `/` key focuses search and Escape clears it. Product tabs support arrow keys, Home and End. With JavaScript disabled, every guide and product panel remains available. Typography uses Google Fonts with local fallbacks.
+Search filters guide titles, summaries and topic keywords. `/` focuses search; Escape clears it. Screenshot tabs support arrow keys, Home and End. With JavaScript disabled, all guide cards and screenshot panels remain available. Reduced-motion mode disables the animated effects. Native links, buttons, inputs and disclosure elements retain their keyboard behavior.
+
+## App screenshots
+
+The four active captures (`collection-hero.png`, `fragrance-detail.png`, `notes.png`, `backup.png`) were refreshed on 2026-11-25 from the running sibling Scentkeep app frontend. The session uses isolated sample responses at the IPC boundary: existing fragrance metadata/artwork, example ratings and accords, no personal profile, prices, journal content or integration credentials. The UI itself is the actual Svelte application, not a recreated mockup. Website captions identify sample records. Each raster embeds its origin. The older `*-1.png` images are unused legacy captures.
 
 ## Validation
 
 Checked all twelve pages in headless Chrome at desktop and phone widths, including 320px; local links and fragment targets; images; keyboard tabs and mobile menu; search and its empty state; prompt copying success and fallback; and content availability without JavaScript. Axe WCAG A/AA checks reported no violations on the twelve pages at the tested mobile viewport. `node --check script.js`, the MCP check and `git diff --check` pass.
 
-Existing screenshots show a development interface. See `CONTENT_AUDIT.md` and `WEBSITE_HANDOFF.md` for product facts and publication requirements. The redesign is prepared locally; hosting and publication remain separate.
+The redesign is prepared locally. Hosting and publication remain separate. Product facts and publication notes are in `CONTENT_AUDIT.md` and `WEBSITE_HANDOFF.md`.
